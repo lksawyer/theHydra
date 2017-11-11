@@ -42,7 +42,7 @@ function updateSigninStatus(isSignedIn) {
     makeApiCall();
   } else {
     authorizeButton.css("display", "block");
-    signoutButton.css("display", "none";
+    signoutButton.css("display", "none");
   }
 }
 function handleAuthClick(event) {
