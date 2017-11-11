@@ -40,7 +40,7 @@ function updateSigninStatus(isSignedIn) {
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
     $("#myModal").modal("toggle");
-    makeApiCall();
+   // makeApiCall();
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
@@ -68,7 +68,11 @@ function handleSignoutClick(event) {
 // }
 
 //begin tasks section
-//sample function from documentation:
+//sample function from documentation happens on a click:
+
+$("#apiButton").on("click", function) {
+  listTaskLists();
+}
 
 function listTaskLists() {
         var optionalArgs = {
