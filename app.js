@@ -64,7 +64,6 @@ function handleSignoutClick(event) {
 //     var name = resp.result.names[0].givenName;
 //     p.appendChild(document.createTextNode('Hello, '+name+'!'));
 //     document.getElementById('content').appendChild(p);
-//   });
-  
-}
+//   }); 
+// }
 	
