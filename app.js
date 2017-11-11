@@ -66,4 +66,25 @@ function handleSignoutClick(event) {
 //     document.getElementById('content').appendChild(p);
 //   }); 
 // }
+
+//begin tasks section
+//sample function from documentation:
+
+function listTaskLists() {
+        var optionalArgs = {
+          maxResults: 10
+        };
+        var response = Tasks.Tasklists.list(optionalArgs);
+        var taskLists = response.items;
+        if (taskLists && taskLists.length > 0) {
+          console.log('Task lists:');
+          for (var i = 0; i < taskLists.length; i++) {
+            var taskList = taskLists[i];
+            console.log('%s (%s)', taskList.title, taskList.id);
+            
+          }
+        } else {
+          console.log('No task lists found.');
+        }
+      }
 	
