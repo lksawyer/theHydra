@@ -16,6 +16,8 @@
 	  <!-- Trigger the modal with a button -->
 	  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
+	  <button id="signout-button" style="display: none;">Sign Out</button>
+
 	  <!-- Modal -->
 	  <div class="modal fade" id="myModal" role="dialog">
 	    <div class="modal-dialog">
@@ -29,7 +31,6 @@
 	        <div class="modal-body">
 				<!--Add buttons to initiate auth sequence and sign out-->
 				<button id="authorize-button" style="display: none;">Authorize</button>
-				<button id="signout-button" style="display: none;">Sign Out</button>
 
 				<div id="content"></div>
 
@@ -91,6 +92,7 @@
 	  } else {
 	    authorizeButton.style.display = 'block';
 	    signoutButton.style.display = 'none';
+	    $("#myModal").modal("toggle");
 	  }
 	}
 	function handleAuthClick(event) {
