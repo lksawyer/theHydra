@@ -70,9 +70,9 @@ function handleSignoutClick(event) {
 //begin tasks section
 //sample function from documentation happens on a click:
 
-$("#apiButton").on("click", function) {
+$("#apiButton").on("click", function() {
   listTaskLists();
-}
+});
 
 function listTaskLists() {
         var optionalArgs = {
