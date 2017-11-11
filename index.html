@@ -86,7 +86,7 @@
 	  if (isSignedIn) {
 	    authorizeButton.style.display = 'none';
 	    signoutButton.style.display = 'block';
-	    $("#myModal").modal();
+	    .modal("toggle");
 	    makeApiCall();
 	  } else {
 	    authorizeButton.style.display = 'block';
