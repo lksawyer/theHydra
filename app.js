@@ -13,7 +13,8 @@ var clientId = '908655633390-bipca08v5p9tkot7cjul1pgtcbd4ts10.apps.googleusercon
 // Enter one or more authorization scopes. Refer to the documentation for
 // the API or https://developers.google.com/people/v1/how-tos/authorizing
 // for details.
-var scopes = 'profile';
+//var scopes = 'profile';
+var scopes = 'https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/tasks.readonly';
 var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
 function handleClientLoad() {
@@ -107,10 +108,10 @@ function authenticate() {
           console.error("Execute error", error);
         });
   }
-
   // gapi.load("client:auth2", function() {
   //   gapi.auth2.init({client_id: clientId});
   // });
+
 
 /*
 function listTaskLists() {
