@@ -14,8 +14,8 @@ var clientId = '908655633390-bipca08v5p9tkot7cjul1pgtcbd4ts10.apps.googleusercon
 // the API or https://developers.google.com/people/v1/how-tos/authorizing
 // for details.
 var scopes = 'profile';
-var authorizeButton = document.getElementById('authorize-button');
-var signoutButton = document.getElementById('signout-button');
+var authorizeButton = $('#authorize-button');
+var signoutButton = $('#signout-button');
 function handleClientLoad() {
   // Load the API client and auth2 library
   gapi.load('client:auth2', initClient);
@@ -31,18 +31,18 @@ function initClient() {
     gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
     // Handle the initial sign-in state.
     updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-    authorizeButton.onclick = handleAuthClick;
-    signoutButton.onclick = handleSignoutClick;
+    authorizeButton.on("click", handleAuthClick);
+    signoutButton.on("click", handleSignoutClick);
   });
 }
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
-    authorizeButton.style.display = 'none';
-    signoutButton.style.display = 'block';
+    authorizeButton.css("display", "none");
+    signoutButton.css("display", "block");
     makeApiCall();
   } else {
-    authorizeButton.style.display = 'block';
-    signoutButton.style.display = 'none';
+    authorizeButton.css("display", "block");
+    signoutButton.css("display", "none";
   }
 }
 function handleAuthClick(event) {
