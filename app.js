@@ -71,9 +71,48 @@ function handleSignoutClick(event) {
 //sample function from documentation happens on a click:
 
 $("#apiButton").on("click", function() {
-  listTaskLists();
+  //listTaskLists();
+  authenticate();
+  loadClient();
+  execute();
 });
 
+function authenticate() {
+    return gapi.auth2.getAuthInstance()
+        .signIn({scope: "https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/tasks.readonly"})
+        .then(function() {
+          console.log("Sign-in successful");
+        }, function(error) {
+          console.error("Error signing in", error);
+        });
+  }
+  function loadClient() {
+    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/tasks/v1/rest")
+        .then(function() {
+          console.log("GAPI client loaded for API");
+        }, function(error) {
+          console.error("Error loading GAPI client for API");
+        });
+  }
+  // Make sure the client is loaded and sign-in is complete before calling this method.
+  function execute() {
+    return gapi.client.tasks.tasklists.list({
+      "maxResults": "100",
+      "pageToken": "1"
+    })
+        .then(function(response) {
+          // Handle the results here (response.result has the parsed body).
+          console.log("Response", response);
+        }, function(error) {
+          console.error("Execute error", error);
+        });
+  }
+  gapi.load("client:auth2", function() {
+    gapi.auth2.init({client_id: clientId});
+  });
+
+
+/*
 function listTaskLists() {
         var optionalArgs = {
           maxResults: 10
@@ -91,4 +130,4 @@ function listTaskLists() {
           console.log('No task lists found.');
         }
       }
-	
+*/	
