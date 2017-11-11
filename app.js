@@ -108,9 +108,9 @@ function authenticate() {
           console.error("Execute error", error);
         });
   }
-  gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: clientId});
-  });
+  // gapi.load("client:auth2", function() {
+  //   gapi.auth2.init({client_id: clientId});
+  // });
 
 
 /*
