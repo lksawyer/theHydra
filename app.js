@@ -1,51 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Say hello using the People API</title>
-    <meta charset='utf-8' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-	</head>
-	<body>
 
-	<div class="container">
-	  <h2>Modal Example</h2>
-	  <!-- Trigger the modal with a button -->
-	  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-	  <button id="signout-button" style="display: none;">Sign Out</button>
-
-	  <!-- Modal -->
-	  <div class="modal fade" id="myModal" role="dialog">
-	    <div class="modal-dialog">
-	    
-	      <!-- Modal content-->
-	      <div class="modal-content">
-	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title">Modal Header</h4>
-	        </div>
-	        <div class="modal-body">
-				<!--Add buttons to initiate auth sequence and sign out-->
-				<button id="authorize-button" style="display: none;">Authorize</button>
-
-				<div id="content"></div>
-
-	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        </div>
-	      </div>
-	      
-	    </div>
-	  </div>
-	  
-	</div>
-
-	<script type="text/javascript">
 	// Enter an API key from the Google API Console:
 	//   https://console.developers.google.com/apis/credentials
 	var apiKey = 'AIzaSyCcz_rY6GhH9tTnejrKQgbxXu7y8CM2Fjg';
@@ -113,12 +66,4 @@
 	    document.getElementById('content').appendChild(p);
 	  });
 	}
-	</script>
-
-    <script type="text/javascript" src="app.js"></script>
-    <script async defer src="https://apis.google.com/js/api.js" 
-      onload="this.onload=function(){};handleClientLoad()" 
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
-  </body>
-</html>
+	
