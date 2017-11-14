@@ -97,6 +97,7 @@ function authenticate() {
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
+    console.log(gapi.client.tasks.tasklists);
     return gapi.client.tasks.tasklists.list({
       "maxResults": "100",
       "pageToken": "1"
