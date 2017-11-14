@@ -76,6 +76,7 @@ $("#apiButton").on("click", function() {
   authenticate();
   loadClient();
   execute();
+  listTaskLists(); 
 });
 
 function authenticate() {
@@ -114,7 +115,7 @@ function authenticate() {
   // });
 
 
-/*
+
 function listTaskLists() {
         var optionalArgs = {
           maxResults: 10
@@ -132,4 +133,4 @@ function listTaskLists() {
           console.log('No task lists found.');
         }
       }
-*/	
+	
