@@ -72,11 +72,11 @@ function handleSignoutClick(event) {
 //sample function from documentation happens on a click:
 
 $("#apiButton").on("click", function() {
-  //listTaskLists();
-  authenticate();
-  loadClient();
-  execute();
-});
+//   //listTaskLists();
+//   authenticate();
+//   loadClient();
+//   execute();
+// });
 
 function authenticate() {
     return gapi.auth2.getAuthInstance()
@@ -132,4 +132,5 @@ function listTaskLists() {
           console.log('No task lists found.');
         }
       }
-*/	
+*/
+});	
