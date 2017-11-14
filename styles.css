@@ -120,3 +120,9 @@ i, #sign-out {
     border-radius: 4px;
     background-color: darkgray;
 }
+
+/*======== Sign in / Out ====*/
+
+#hide {
+	display: none;
+}
