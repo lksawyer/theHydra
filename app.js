@@ -71,7 +71,7 @@ function handleSignoutClick(event) {
 //********begin tasks section********
 //sample function from documentation happens on a click:
 
-
+/*
 $("#apiButton").on("click", function() {
   authenticate();  //I realized I was calling multiple parts of the same 
  });                //function all at once. So as of task16 I'm just calling
@@ -86,28 +86,28 @@ function authenticate() {
           console.error("Error signing in", error);
         };
   }
-  function loadClient() {
-    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/tasks/v1/rest")
-        .then(function() {
-          console.log("GAPI client loaded for API");
-        }, function(error) {
-          console.error("Error loading GAPI client for API");
-        });
-  }
-  // Make sure the client is loaded and sign-in is complete before calling this method.
-  function execute() {
-    console.log("gapi.client.tasks.tasklists: ", gapi.client.tasks.tasklists);
-    return gapi.client.tasks.tasklists.list({
-      "maxResults": "100",
-      "pageToken": "1"
-    })
-        .then(function(response) {
-          // Handle the results here (response.result has the parsed body).
-          console.log("Response", response);
-        }, function(error) {
-          console.error("Execute error", error);
-        });
-  }
+function loadClient() {
+  return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/tasks/v1/rest")
+      .then(function() {
+        console.log("GAPI client loaded for API");
+      }, function(error) {
+        console.error("Error loading GAPI client for API");
+      });
+}
+// Make sure the client is loaded and sign-in is complete before calling this method.
+function execute() {
+  console.log("gapi.client.tasks.tasklists: ", gapi.client.tasks.tasklists);
+  return gapi.client.tasks.tasklists.list({
+    "maxResults": "100",
+    "pageToken": "1"
+  })
+      .then(function(response) {
+        // Handle the results here (response.result has the parsed body).
+        console.log("Response", response);
+      }, function(error) {
+        console.error("Execute error", error);
+      });
+}
   // gapi.load("client:auth2", function() {
   //   gapi.auth2.init({client_id: clientId});
   // });
