@@ -68,36 +68,38 @@ function handleSignoutClick(event) {
 //   }); 
 // }
 
-//begin tasks section
+//********begin tasks section********
 //sample function from documentation happens on a click:
 
+
 $("#apiButton").on("click", function() {
-//   //listTaskLists();
-//   authenticate();
-//   loadClient();
+//   //listTaskLists();  task11+ experiment: I'm commenting these out and putting all the functions
+//   authenticate();  into the onClick to see if that helps the timing issue. There's already a couple 
+//   loadClient();  instances of .then in Google's code so those might help.
 //   execute();
 // });
+
 
 function authenticate() {
     return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/tasks.readonly"})
         .then(function() {
           console.log("Sign-in successful");
-        }, function(error) {
+        }), function(error) {
           console.error("Error signing in", error);
-        });
+        };
   }
-  function loadClient() {
+  .then(function loadClient() {
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/tasks/v1/rest")
         .then(function() {
           console.log("GAPI client loaded for API");
         }, function(error) {
           console.error("Error loading GAPI client for API");
         });
-  }
+  })
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
-    console.log(gapi.client.tasks.tasklists);
+    console.log("gapi.client.tasks.tasklists: ", gapi.client.tasks.tasklists);
     return gapi.client.tasks.tasklists.list({
       "maxResults": "100",
       "pageToken": "1"
@@ -114,23 +116,28 @@ function authenticate() {
   // });
 
 
-/*
-function listTaskLists() {
-        var optionalArgs = {
-          maxResults: 10
-        };
-        var response = Tasks.Tasklists.list(optionalArgs);
-        var taskLists = response.items;
-        if (taskLists && taskLists.length > 0) {
-          console.log('Task lists:');
-          for (var i = 0; i < taskLists.length; i++) {
-            var taskList = taskLists[i];
-            console.log('%s (%s)', taskList.title, taskList.id);
-            
+
+/* --commented back out to just test the first part of this.
+  function listTaskLists() {
+          var optionalArgs = {
+            maxResults: 10
+          };
+          var response = Tasks.Tasklists.list(optionalArgs);
+          var taskLists = response.items;
+          if (taskLists && taskLists.length > 0) {
+            console.log('Task lists:');
+            for (var i = 0; i < taskLists.length; i++) {
+              var taskList = taskLists[i];
+              console.log('%s (%s)', taskList.title, taskList.id);
+              
+            }
+          } else {
+            console.log('No task lists found.');
+
           }
-        } else {
-          console.log('No task lists found.');
         }
+
       }
 */
 });	
+
