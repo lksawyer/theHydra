@@ -83,9 +83,9 @@ function authenticate() {
         .signIn({scope: "https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/tasks.readonly"})
         .then(function() {
           console.log("Sign-in successful");
-        }, function(error) {
+        }), function(error) {
           console.error("Error signing in", error);
-        });
+        };
   }
   function loadClient() {
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/tasks/v1/rest")
