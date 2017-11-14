@@ -73,12 +73,9 @@ function handleSignoutClick(event) {
 
 
 $("#apiButton").on("click", function() {
-//   //listTaskLists();  task11+ experiment: I'm commenting these out and putting all the functions
-//   authenticate();  into the onClick to see if that helps the timing issue. There's already a couple 
-//   loadClient();  instances of .then in Google's code so those might help.
-//   execute();
-// });
-
+  authenticate();  //I realized I was calling multiple parts of the same 
+ });                //function all at once. So as of task16 I'm just calling
+                  // the first one. When that works I'll try calling the 2nd sample function.
 
 function authenticate() {
     return gapi.auth2.getAuthInstance()
@@ -89,14 +86,14 @@ function authenticate() {
           console.error("Error signing in", error);
         };
   }
-  .then(function loadClient() {
+  function loadClient() {
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/tasks/v1/rest")
         .then(function() {
           console.log("GAPI client loaded for API");
         }, function(error) {
           console.error("Error loading GAPI client for API");
         });
-  })
+  }
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
     console.log("gapi.client.tasks.tasklists: ", gapi.client.tasks.tasklists);
@@ -139,5 +136,5 @@ function authenticate() {
 
       }
 */
-});	
+	
 
