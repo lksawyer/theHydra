@@ -72,7 +72,9 @@ function handleSignoutClick(event) {
 //sample function from documentation happens on a click:
 
 
+
 $("#apiButton").on("click", //function() {
+
 
   //listTaskLists(); task11 experiment: rather than calling these, I'm putting them all into the onClick to see
 //   authenticate(); if that helps the timing issue. There's already a couple instances of ".then" in Google's  
@@ -81,7 +83,7 @@ $("#apiButton").on("click", //function() {
 //   listTaskLists(); 
 // });
 
-console.log("click successful!")
+console.log("click successful!");
 
 function authenticate() {
     return gapi.auth2.getAuthInstance()
@@ -139,7 +141,6 @@ function authenticate() {
 
           }
         }
-
       */
 });	
 
