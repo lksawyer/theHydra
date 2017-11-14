@@ -71,14 +71,18 @@ function handleSignoutClick(event) {
 //********begin tasks section********
 //sample function from documentation happens on a click:
 
+
 $("#apiButton").on("click", //function() {
+
   //listTaskLists(); task11 experiment: rather than calling these, I'm putting them all into the onClick to see
 //   authenticate(); if that helps the timing issue. There's already a couple instances of ".then" in Google's  
 //   loadClient();   code so those might help.
 //   execute();
 //   listTaskLists(); 
 // });
+
 console.log("click successful!")
+
 function authenticate() {
     return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/tasks.readonly"})
@@ -115,6 +119,7 @@ function authenticate() {
   // });
 
 
+
 /* --commented back out to just test the first part of this.
   function listTaskLists() {
           var optionalArgs = {
@@ -131,7 +136,10 @@ function authenticate() {
             }
           } else {
             console.log('No task lists found.');
+
           }
         }
+
       */
 });	
+
