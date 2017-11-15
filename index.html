@@ -4,12 +4,12 @@
 	    <title>The Hydra</title>
 	    <meta charset='utf-8' />
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <!-- links -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<!-- <script type="text/javascript" src="app.js"></script> -->
-		<script type="text/javascript" src="Giel.js"></script>
 		<script src="https://use.fontawesome.com/8bd1051b89.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>	
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
@@ -25,7 +25,7 @@
 					<li class="flex-item">Calendar</li>
 					<li class="flex-item">Weather/Time</li>
 					<li id="sign-out" class="flex-item"><button id="authorize-button">Sign In</button><button id="signout-button">Sign Out</button></li>
-					<li class="flex-item"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp&nbspDate&nbsp&nbsp<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></li>
+					<li class="flex-item"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i><span id="display-date"></span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></li>
 				</ul>
 			</header>
 			<main>
@@ -40,7 +40,7 @@
 									<i class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit Event"></i>
 								</div>
 								<div>
-									8:00 am | Dentist Apointment
+									<span id="event-time"></span>&nbsp|&nbsp<span id="event-title"></span>
 								</div>
 							</div>
 							<div class="event">
@@ -63,7 +63,8 @@
 			</main>
 		</div>
 	</div>
-    <script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="Giel.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script async defer src="https://apis.google.com/js/api.js" 
       onload="this.onload=function(){};handleClientLoad()" 
       onreadystatechange="if (this.readyState === 'complete') this.onload()">

@@ -112,57 +112,37 @@
         console.log(textContent);
         // pre.appendChild(textContent);
 
-        var event1 = $("#cardTitle").html(textContent);
-      } 
-      // // ============= Pushing to create events ==============
-      // //onclick
-      // $("#newScheduleEvent").on("click", function (event){
-      //     event.preventDefault();
+      $("#event-title").html(textContent);
 
-      //     newUserEvent = $("#newUserEvent").val().trim();
-         
-          
-      //     console.log("NEW USERS EVENT: " + newUserEvent);
-      //     $("#newUserEvent").val("");
-      //     gapi.client.calendar.events.quickAdd({
-      //           "calendarId":"newUserEvent"   
-      //     }).then(function(response) {
-      //       var newUser = response.result.get;
-      //       $("#acl").text("Your Information: ");
-      //       console.log("acl: " + acl);
-      //     });
-      // });
-      /**
-       * Print the summary and start datetime/date of the next ten events in
-       * the authorized user's calendar. If no events are found an
-       * appropriate message is printed.
-       */
-       $("#time-now").html(new Date());//I added this to display
-      function listUpcomingEvents() {
-        gapi.client.calendar.events.list({
-          'calendarId': 'primary',
-          'timeMin': (new Date()).toISOString(),
-          'showDeleted': false,
-          'singleEvents': true,
-          'maxResults': 10,
-          'orderBy': 'startTime'
-        }).then(function(response) {
-          var events = response.result.items;
-          appendPre('Upcoming events:');
-          if (events.length > 0) {
-              for (i = 0; i < events.length; i++) {
-                var event = events[i];
-                var when = event.start.dateTime;
-                  if (!when) {
-                    when = event.start.date;
-                  }
-                $("#events").text("Upcoming: " + event);
-                }
-              } else {
-            appendPre('No upcoming events found.');
-          }
-        });
-      }
+
+      } 
+
+      $("#time-now").html(new Date());//I added this to display
+      // function listUpcomingEvents() {
+      //   gapi.client.calendar.events.list({
+      //     'calendarId': 'primary',
+      //     'timeMin': (new Date()).toISOString(),
+      //     'showDeleted': false,
+      //     'singleEvents': true,
+      //     'maxResults': 10,
+      //     'orderBy': 'startTime'
+      //   }).then(function(response) {
+      //     var events = response.result.items;
+      //     appendPre('Upcoming events:');
+      //     if (events.length > 0) {
+      //         for (i = 0; i < events.length; i++) {
+      //           var event = events[i];
+      //           var when = event.start.dateTime;
+      //             if (!when) {
+      //               when = event.start.date;
+      //             }
+      //           $("#events").text("Upcoming: " + event);
+      //           }
+      //         } else {
+      //       appendPre('No upcoming events found.');
+      //     }
+      //   });
+      // }
         //=====================================
         $("button").on("click", function() {
             //creating url variable
@@ -181,10 +161,36 @@
                 console.log(response);
               });
         });
-        //====another API call=======
+
+        //======= DATE MODIFIED =====
+        function formatDate(date) {
+          var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+          ];
+
+          var day = date.getDate();
+          var monthIndex = date.getMonth();
+          var year = date.getFullYear();
+
+          return day + ' ' + monthNames[monthIndex] + ' ' + year;
+        }
+
+         // current hours
+        var currentHours = moment(new Date()).format(" h ");
+        console.log("Currently you are at " + currentHours);
+
+        console.log("timeMin "+ timeMin);
+        //==== API call for events at current time =======
 
         var s = new Date();//added this to retrieve events for one day
-        s.setHours(1);
+        console.log(formatDate(s));
+        console.log("hi Gel");
+        console.log(s);
+        $("#display-date").text(formatDate(s));
+        s.setHours(currentHours);
         s.setMinutes(0);
         s.setSeconds(0);
         console.log("s " + s);
@@ -196,7 +202,7 @@
         console.log(typeof d);
         var timeMin = new Date().toISOString();
 
-        console.log("timeMin "+ timeMin);
+       
          function listUpcomingEvents() {
         gapi.client.calendar.events.list({
           'calendarId': 'primary',
@@ -204,17 +210,22 @@
           'timeMax': d.toISOString(),
           'showDeleted': false,
           'singleEvents': true,
-          'maxResults': 100,
+          'maxResults': 1,
           // 'orderBy': 'startTime'
         }).then(function(response) {
           var events = response.result.items;
-          $("#events").text("Upcoming: ");
+          console.log("THIS IS EVENTS" + events);
           if (events.length > 0) {
             for (i = 0; i < events.length; i++) {
               var event = events[i];
               var when = event.start.dateTime;
-              console.log("event.start.dateTime " + when);
-              console.log("response.result.items: " + response.result.items);
+              //====using momentJS time format======= 
+              var eventHour = moment(when).format(" h : mm a");
+              console.log("TIME TODAY " + eventHour);
+              //===========
+              $("#event-time").html(eventHour);
+              console.log("WHEN: " + when);
+              console.log("THIS IS EVENTSI: " + event);
               if (!when) {
                 when = event.start.date;           
                 console.log("second one "+when)
