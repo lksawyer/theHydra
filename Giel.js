@@ -184,6 +184,10 @@
         //====another API call=======
 
         var s = new Date();//added this to retrieve events for one day
+        //Write start date to #display-date
+        console.log("hi logan");
+        console.log(s);
+        $("#display-date").html(s);
         s.setHours(1);
         s.setMinutes(0);
         s.setSeconds(0);
