@@ -216,7 +216,7 @@
             for (i = 0; i < events.length; i++) {
               var event = events[i];
               var when = event.start.dateTime;
-              //====testing 
+              //====testing time format======= 
               var dateToday = moment(when).format(" h : mm a");
               console.log("TIME TODAY " + dateToday);
               //===========
