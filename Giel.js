@@ -112,31 +112,11 @@
         console.log(textContent);
         // pre.appendChild(textContent);
 
-        var event1 = $("#cardTitle").html(textContent);
-      } 
-      // // ============= Pushing to create events ==============
-      // //onclick
-      // $("#newScheduleEvent").on("click", function (event){
-      //     event.preventDefault();
+        $("#event-title").html(textContent);
 
-      //     newUserEvent = $("#newUserEvent").val().trim();
-         
-          
-      //     console.log("NEW USERS EVENT: " + newUserEvent);
-      //     $("#newUserEvent").val("");
-      //     gapi.client.calendar.events.quickAdd({
-      //           "calendarId":"newUserEvent"   
-      //     }).then(function(response) {
-      //       var newUser = response.result.get;
-      //       $("#acl").text("Your Information: ");
-      //       console.log("acl: " + acl);
-      //     });
-      // });
-      /**
-       * Print the summary and start datetime/date of the next ten events in
-       * the authorized user's calendar. If no events are found an
-       * appropriate message is printed.
-       */
+
+      } 
+
        $("#time-now").html(new Date());//I added this to display
       function listUpcomingEvents() {
         gapi.client.calendar.events.list({
@@ -181,13 +161,32 @@
                 console.log(response);
               });
         });
+
+        //======= DATE MODIFIED =====
+        function formatDate(date) {
+          var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+          ];
+
+          var day = date.getDate();
+          var monthIndex = date.getMonth();
+          var year = date.getFullYear();
+
+          return day + ' ' + monthNames[monthIndex] + ' ' + year;
+        }
+          // show current date-time in console
+
         //====another API call=======
 
         var s = new Date();//added this to retrieve events for one day
+        console.log(formatDate(s));
         //Write start date to #display-date
         console.log("hi logan");
         console.log(s);
-        $("#display-date").html(s);
+        $("#display-date").text(formatDate(s));
         s.setHours(1);
         s.setMinutes(0);
         s.setSeconds(0);
@@ -217,8 +216,14 @@
             for (i = 0; i < events.length; i++) {
               var event = events[i];
               var when = event.start.dateTime;
+              //====testing 
+              var dateToday = moment(when).format(" h : mm a");
+              console.log("TIME TODAY " + dateToday);
+              //===========
+              $("#event-time").html(dateToday);
               console.log("event.start.dateTime " + when);
               console.log("response.result.items: " + response.result.items);
+              console.log("THIS IS EVENTSI: " + event);
               if (!when) {
                 when = event.start.date;           
                 console.log("second one "+when)
