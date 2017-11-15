@@ -7,6 +7,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<!-- <script type="text/javascript" src="app.js"></script> -->
+		<script type="text/javascript" src="Giel.js"></script>
 		<script src="https://use.fontawesome.com/8bd1051b89.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -23,7 +24,7 @@
 				<ul class="flex-container">
 					<li class="flex-item">Calendar</li>
 					<li class="flex-item">Weather/Time</li>
-					<li id="sign-out" class="flex-item"><span id="signin">Sign In</span></li>
+					<li id="sign-out" class="flex-item"><button id="authorize-button">Sign In</button><button id="signout-button">Sign Out</button></li>
 					<li class="flex-item"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp&nbspDate&nbsp&nbsp<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></li>
 				</ul>
 			</header>
@@ -62,19 +63,6 @@
 			</main>
 		</div>
 	</div>
-
-
-
-	<!-- Main Content -->
-	<div>
-		<!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-		
-		<button id="apiButton" class="btn btn-primary btn-lg">Make API Call</button>
-	</div>
-		
-	
-
     <script type="text/javascript" src="app.js"></script>
     <script async defer src="https://apis.google.com/js/api.js" 
       onload="this.onload=function(){};handleClientLoad()" 
